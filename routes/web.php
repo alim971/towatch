@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MovieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/movies', MovieController::class);
+Route::get('/', 'App\Http\Controllers\MovieController@index')->name('index');
+Route::post('/only', 'App\Http\Controllers\MovieController@only')->name('only');
+Route::get('/movies/{movie}/watch', 'App\Http\Controllers\MovieController@watch')->name('movies.watch');

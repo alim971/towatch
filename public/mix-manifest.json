@@ -1,0 +1,16 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/gentellela/custom.css": "/gentellela/custom.css",
+    "/gentellela/custom.js": "/gentellela/custom.js",
+    "/gentellela/vendors/fullcalendar/dist/fullcalendar.min.css": "/gentellela/vendors/fullcalendar/dist/fullcalendar.min.css",
+    "/gentellela/vendors/fullcalendar/dist/fullcalendar.print.css": "/gentellela/vendors/fullcalendar/dist/fullcalendar.print.css",
+    "/gentellela/vendors/switchery/dist/switchery.min.js": "/gentellela/vendors/switchery/dist/switchery.min.js",
+    "/gentellela/vendors/switchery/dist/switchery.min.css": "/gentellela/vendors/switchery/dist/switchery.min.css",
+    "/gentellela/vendors/nprogress/nprogress.js": "/gentellela/vendors/nprogress/nprogress.js",
+    "/gentellela/jquery.tagsinput.min.css": "/gentellela/jquery.tagsinput.min.css",
+    "/gentellela/jquery.tagsinput.js": "/gentellela/jquery.tagsinput.js",
+    "/gentellela/fullcalendar.js": "/gentellela/fullcalendar.js",
+    "/gentellela/fullcalendar-locale.js": "/gentellela/fullcalendar-locale.js",
+    "/js/jquery-sortable.js": "/js/jquery-sortable.js"
+}

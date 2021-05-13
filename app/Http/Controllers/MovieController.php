@@ -1,0 +1,113 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Movie;
+use Illuminate\Http\Request;
+
+class MovieController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+//        request()->session()->forget('only_not_watched');
+        if(session('only_not_watched', "false") == "true") {
+            $movies = Movie::where('watched', false)->paginate(1);
+        } else {
+            $movies = Movie::paginate(3);
+        }
+        return view('welcome', ['movies' => $movies, 'sess' => session('only_not_watched', false)]);
+    }
+    public function only(Request $request)
+    {
+        session(['only_not_watched' => $request->input('only')]);
+        return redirect()->route('index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('create', ['movies' => []]);
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        Movie::create($request->all());
+        return redirect()->route('index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Movie  $movie
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Movie $movie)
+    {
+        return view('edit', ['movie' => $movie]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Movie  $movie
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Movie $movie)
+    {
+        return view('edit', ['movie' => $movie]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Movie  $movie
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Movie $movie)
+    {
+        $movie->update($request->all());
+        return redirect()->route('index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Movie  $movie
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Movie $movie)
+    {
+        $movie->delete();
+        return redirect()->route('index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Movie  $movie
+     * @return \Illuminate\Http\Response
+     */
+    public function watch(Movie $movie)
+    {
+        $movie->watched = !$movie->watched;
+        $movie->update();
+        return redirect()->route('index');
+    }
+}

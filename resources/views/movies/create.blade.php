@@ -1,0 +1,92 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Add movie</div>
+
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('movies.store') }}">
+                            @csrf
+                            <div class="" style="margin-bottom: 25px; text-align: center">
+                                <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i></button>
+                                <a href="{{ route('index') }}" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                            </div>
+                            <input type="hidden" name="user_id" value="{{ \Illuminate\Support\Facades\Auth::id() }}">
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
+
+                                <div class="col-md-6">
+                                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" autocomplete="description">
+
+                                    @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="url" class="col-md-4 col-form-label text-md-right">Url</label>
+
+                                <div class="col-md-6">
+                                    <input id="url" type="text" class="form-control @error('url') is-invalid @enderror" name="url" autocomplete="url">
+
+                                    @error('url')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="imbd" class="col-md-4 col-form-label text-md-right">IMBD/CSFD</label>
+
+                                <div class="col-md-6">
+                                    <input id="imbd" type="text" class="form-control @error('imdb') is-invalid @enderror" name="imbd" autocomplete="imbd">
+                                </div>
+                                @error('imbd')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="imbd" class="col-md-4 col-form-label text-md-right">Watched</label>
+
+                                <div class="col-md-6">
+                                    <input type="hidden" name="watched" value="0">
+                                    <input id="watched" type="checkbox" class="js-switch form-control @error('watched') is-invalid @enderror" name="watched" value="1">
+                                </div>
+                                @error('watched')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

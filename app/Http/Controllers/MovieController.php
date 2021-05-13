@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,13 +25,13 @@ class MovieController extends Controller
      */
     public function index()
     {
-//        request()->session()->forget('only_not_watched');
+        $user = Auth::user();
         if(session('only_not_watched', "false") == "true") {
-            $movies = Movie::where('watched', false)->paginate(1);
+            $movies = $user->movies()->where('watched', false)->paginate(4);
         } else {
-            $movies = Movie::paginate(3);
+            $movies = $user->movies()->paginate(4);
         }
-        return view('welcome', ['movies' => $movies, 'sess' => session('only_not_watched', false)]);
+        return view('home', ['movies' => $movies]);
     }
     public function only(Request $request)
     {
@@ -35,7 +46,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return view('create', ['movies' => []]);
+        return view('movies.create');
 
     }
 
@@ -59,7 +70,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        return view('edit', ['movie' => $movie]);
+        return view('movies.edit', ['movie' => $movie]);
     }
 
     /**
@@ -70,7 +81,7 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        return view('edit', ['movie' => $movie]);
+        return view('movies.edit', ['movie' => $movie]);
     }
 
     /**

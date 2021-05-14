@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Movies</div>
 
@@ -20,7 +20,7 @@
                     </div>
                         @forelse($movies as $movie)
                             <div class="text-center">
-                                <h2 style="display: inline-block" data-toggle="collapse" class="collapsed mar-20 col-md-7"
+                                <h2 style="display: inline-block" data-toggle="collapse" class="collapsed mar-20 col-md-4 text-md-left"
                                     href="#collapse{{$movie->id}}" aria-expanded="true"
                                     aria-controls="collapse{{$movie->id}}">
                                     {{$movie->name}}

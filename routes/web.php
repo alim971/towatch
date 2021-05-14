@@ -18,5 +18,6 @@ Route::resource('/movies', MovieController::class);
 Route::get('/', 'App\Http\Controllers\MovieController@index')->name('index');
 Route::post('/only', 'App\Http\Controllers\MovieController@only')->name('only');
 Route::get('/movies/{movie}/watch', 'App\Http\Controllers\MovieController@watch')->name('movies.watch');
+Route::get('/movies/{movie}/up', 'App\Http\Controllers\MovieController@up')->name('movies.up');
 
 Auth::routes();

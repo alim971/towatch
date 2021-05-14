@@ -102,9 +102,9 @@ class MovieController extends Controller
     public function update(Request $request, Movie $movie)
     {
         $next_order =  1;
-        foreach(Auth::user()->movies as $movie) {
-            $movie->order += 1;
-            $movie->save();
+        foreach(Auth::user()->movies as $movieT) {
+            $movieT->order += 1;
+            $movieT->save();
         }
         $request->request->add(['order' => $next_order]);
         $movie->update($request->all());

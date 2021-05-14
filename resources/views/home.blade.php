@@ -82,7 +82,7 @@
                         @if($movies->hasPages())
                             <div class="flex justify-center">
 
-                                <div style="margin-left: 35px" class="text-center">
+                                <div style="margin-top: 25px; position: relative; left: {{45 - 2*$movies->lastPage()}}%" class="text-center">
                                     {{ $movies->links("pagination::bootstrap-4") }}
                                 </div>
                             </div>

@@ -58,12 +58,12 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="imbd" class="col-md-4 col-form-label text-md-right">IMBD/CSFD</label>
+                                <label for="imdb" class="col-md-4 col-form-label text-md-right">IMBD/CSFD</label>
 
                                 <div class="col-md-6">
-                                    <input id="imbd" type="text" class="form-control @error('imdb') is-invalid @enderror" name="imbd" autocomplete="imbd">
+                                    <input id="imdb" type="text" class="form-control @error('imdb') is-invalid @enderror" name="imdb" autocomplete="imdb">
                                 </div>
-                                @error('imbd')
+                                @error('imdb')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -71,7 +71,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="imbd" class="col-md-4 col-form-label text-md-right">Watched</label>
+                                <label for="watched" class="col-md-4 col-form-label text-md-right">Watched</label>
 
                                 <div class="col-md-6">
                                     <input type="hidden" name="watched" value="0">

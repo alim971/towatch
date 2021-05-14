@@ -22,6 +22,7 @@ class CreateMoviesTable extends Migration
             $table->string('imdb')->nullable();
             $table->boolean('watched');
             $table->foreignId('user_id')->constrained();
+            $table->unsignedInteger('order');
 //            $table->softDeletes();
         });
     }

@@ -36,6 +36,11 @@
                                         <a href="{{ route('movies.watch', $movie) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
 
                                     @endif
+                                    @if($movie->order != 1)
+                                    <a href="{{ route('movies.up', $movie) }}" class="btn btn-primary"><i class="fa fa-sort-up"></i></a>
+                                    @else
+                                        <a href="" class="disabled btn btn-info"><i class="fa fa-sort-up"></i></a>
+                                    @endif
                                     <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
                                 </form>
                                 <div class="collapse ml-16" id="collapse{{$movie->id}}">

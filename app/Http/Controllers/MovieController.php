@@ -26,7 +26,10 @@ class MovieController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if(session('only_not_watched', "false") == "true") {
+        if(session('only_not_watched', "not") == "not") {
+            session(['only_not_watched' => "true"]);
+        }
+        if(session('only_not_watched') == "true") {
             $movies = $user->movies()->where('watched', false)->orderBy('order')->paginate(10);
         } else {
             $movies = $user->movies()->orderBy('order')->paginate(10);

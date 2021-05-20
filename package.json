@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "gentelella": "^1.4.0"
+        "gentelella": "^1.4.0",
+        "vue-bootstrap-typeahead": "^0.2.6"
     }
 }

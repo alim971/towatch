@@ -18,6 +18,14 @@
                         <input type="checkbox" id="not_watched" class="js-switch" {{session('only_not_watched', false) == "true" ? "checked" : ""}}
                         value="1">
                     </div>
+                        <div class="form-group" style="margin-bottom: 15px; ">
+{{--                            <label for="movie"--}}
+{{--                                   class="control-label">M</label>--}}
+                            <example-component></example-component>
+                        </div>
+{{--                        <div class="panel-body">--}}
+
+                        </div>
                         @forelse($movies as $movie)
                             <div class="text-center">
                                 <h2 style="display: inline-block" data-toggle="collapse" class="collapsed mar-20 col-md-7"

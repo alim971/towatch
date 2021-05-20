@@ -18,6 +18,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="{{asset('gentellela/vendors/switchery/dist/switchery.min.css')}}" rel="stylesheet" type="text/css">
+{{--    <link href="https://unpkg.com/vue-bootstrap-typeahead/dist/VueBootstrapTypeahead.css" rel="stylesheet">--}}
+{{--    <script src="https://unpkg.com/vue-bootstrap-typeahead"></script>--}}
 
 
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
@@ -30,6 +32,14 @@
     <style>
         .inline { display: inline; }
         .mar-20 { margin-bottom: 20px; }
+        .hoverable {
+            cursor: pointer;
+        }
+        .hoverable:hover {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
     </style>
 
 </head>

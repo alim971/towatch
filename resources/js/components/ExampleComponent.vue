@@ -6,6 +6,9 @@
                 <li class="list-group-item hoverable" v-on:click="select(result)" v-for="result in results">
                     <span class="" >{{ result.name }}</span>
                 </li>
+                <li class="list-group-item hoverable" v-on:click="select('-x-')">
+                    <i class="fa fa-times"></i>
+                </li>
             </ul>
         </div>
     </div>
@@ -29,6 +32,10 @@ export default{
             }
         },
         select(result) {
+            if(result === "-x-") {
+                this.results = [];
+                return;
+            }
             this.query = result.name;
             // this.selected = name;
             this.results = [];

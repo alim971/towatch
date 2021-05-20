@@ -1,23 +1,39 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
+    <div>
+        <input type="text" placeholder="what movie are you looking for?" v-model="query" v-on:keyup="autoComplete" class="form-control">
+        <div class="panel-footer" v-if="results.length">
+            <ul class="list-group">
+                <li class="list-group-item hoverable" v-on:click="select(result)" v-for="result in results">
+                    <span class="" >{{ result.name }}</span>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
-
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
+export default{
+    data(){
+        return {
+            query: '',
+            results: []
+        }
+    },
+    methods: {
+        autoComplete(){
+            this.results = [];
+            if(this.query.length >= 1){
+                this.selected = '';
+                axios.get('/auto',{params: {query: this.query}}).then(response => {
+                    this.results = response.data;
+                });
+            }
+        },
+        select(result) {
+            this.query = result.name;
+            // this.selected = name;
+            this.results = [];
+            window.location.href = '/movies/' + result.id + '/showing';
         }
     }
+}
 </script>

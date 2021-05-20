@@ -30,6 +30,14 @@
     <style>
         .inline { display: inline; }
         .mar-20 { margin-bottom: 20px; }
+        .hoverable {
+            cursor: pointer;
+        }
+        .hoverable:hover {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
     </style>
 
 </head>

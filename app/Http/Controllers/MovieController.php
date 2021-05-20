@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,6 +36,15 @@ class MovieController extends Controller
             $movies = $user->movies()->orderBy('order')->paginate(10);
         }
         return view('home', ['movies' => $movies]);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showing(Movie $movie)
+    {
+        return view('showing', ['movies' => Collection::make([$movie])]);
     }
     public function only(Request $request)
     {
@@ -156,5 +166,33 @@ class MovieController extends Controller
         $movie->order = 1;
         $movie->update();
         return redirect()->route('index');
+    }
+
+    /**
+     * Return the json data for autocomplete of users by specified search term
+     *
+     * @return JsonResponse  users meeting the search criteria as json
+     */
+    public function auto()
+    {
+        return $this->autocomplete($_GET['query']);
+    }
+
+    /**
+     * Return the json data for autocomplete of users by specified search term
+     *
+     * @param string $term  needle search term
+     * @return JsonResponse
+     */
+    private function autocomplete(string $term)
+    {
+
+        $user = Auth::user();
+        $movies = $user->movies()->where('name', 'like', "%$term%")
+            ->orWhere('id', 'like', "%$term%")
+            ->orWhere('description', 'like', "%$term%")
+            ->select('name', 'id')->get();
+
+        return response()->json($movies);
     }
 }
